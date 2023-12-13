@@ -21,7 +21,7 @@ public class PriceHttpClient {
         return restTemplate.getForEntity(this.buildUrl(url),PriceOutputDto.class).getBody();
     }
 
-    private String buildUrl(String url) {
-        return SERVER_URL + ":" + port + url;
+    private String buildUrl(String route) {
+        return SERVER_URL + ":" + port + route;
     }
 }
