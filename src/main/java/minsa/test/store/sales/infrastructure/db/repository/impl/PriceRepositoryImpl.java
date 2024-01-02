@@ -26,20 +26,21 @@ public class PriceRepositoryImpl implements PriceRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
+    private static final String PRIORITY = "priority";
+
     @Override
     public Price getPrice(LocalDateTime date, Long productId, Long brandId) {
-        List<PriceJpa> priceJpaList = findPricesJpaByFilter(date, productId, brandId);
-        return priceJpaList.isEmpty() ? null : priceMapper.toEntity(priceJpaList.get(0));
+        return priceMapper.toEntity(findPriceByFilters(date, productId, brandId));
     }
 
-    private List<PriceJpa> findPricesJpaByFilter(LocalDateTime date, Long productId, Long brandId) {
+    private PriceJpa findPriceByFilters(LocalDateTime date, Long productId, Long brandId) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<PriceJpa> criteriaQuery = criteriaBuilder.createQuery(PriceJpa.class);
         Root<PriceJpa> root = criteriaQuery.from(PriceJpa.class);
         List<Predicate> predicates = buildPredicates(criteriaBuilder, root, date, productId, brandId);
         criteriaQuery.where(criteriaBuilder.and(predicates.toArray(new Predicate[0])))
-                .orderBy(criteriaBuilder.desc(root.get("priority")));
-        return entityManager.createQuery(criteriaQuery).setMaxResults(1).getResultList();
+                .orderBy(criteriaBuilder.desc(root.get(PRIORITY)));
+        return entityManager.createQuery(criteriaQuery).setMaxResults(1).getResultStream().findFirst().orElse(new PriceJpa());
     }
 
     private List<Predicate> buildPredicates(CriteriaBuilder criteriaBuilder, Root<PriceJpa> root, LocalDateTime date,
