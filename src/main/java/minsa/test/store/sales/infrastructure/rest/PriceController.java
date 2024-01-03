@@ -1,5 +1,9 @@
 package minsa.test.store.sales.infrastructure.rest;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.AllArgsConstructor;
 import minsa.test.store.sales.application.PriceService;
 import minsa.test.store.sales.application.mapper.PriceMapper;
@@ -22,6 +26,14 @@ public class PriceController {
     private final PriceMapper priceMapper;
 
     @GetMapping("/price")
+    @Operation(summary = "Find price by parameters",
+            tags = {"price"},
+            description = "Return a product identifier, brand identifier, rate to apply, application dates and final " +
+                    "price to be applied filtered by input parameters.",
+            responses = {
+                    @ApiResponse(description = "The price", content = @Content(
+                            schema = @Schema(implementation = PriceOutputDto.class)))
+            })
     public ResponseEntity<PriceOutputDto> findPriceByFilter(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
                                                  LocalDateTime date,
                                                  @RequestParam Long productId,
