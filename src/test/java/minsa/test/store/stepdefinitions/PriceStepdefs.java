@@ -20,7 +20,7 @@ public class PriceStepdefs {
     private final ThreadLocal<String> inputDate = new ThreadLocal<>();
 
     private static final String ROUTE = "/api/store/price";
-    private static final String PARAM_DEFAULT = "productId=35455&brandId=1";
+    private static final String PARAM_DEFAULT = "&productId=35455&brandId=1";
 
 
     @Given("A request filter is filled with {string} {string} productId and brandId")
@@ -36,7 +36,7 @@ public class PriceStepdefs {
     }
 
     private String getRouteAndParams() {
-        return ROUTE + "?date=" + inputDate.get() + "&" + PARAM_DEFAULT;
+        return ROUTE + "?date=" + inputDate.get() + PARAM_DEFAULT;
     }
 
     @Then("Endpoint price response with {string} {string} {string} and {string}")
