@@ -1,6 +1,6 @@
 # SpringBoot-BDD-Java
 # Objective :
-Developed a simple aplication which provides an end point rest of consultation such that:
+Developed a simple application which provides an end point rest of consultation such that:
 Accept as input parameters: date, product identifier, brand identifier.
 Return as output data: product identifier, brand identifier, price list, application dates and final price to be applied.
 
@@ -18,7 +18,7 @@ Return as output data: product identifier, brand identifier, price list, applica
 # Steps to start :
 
 1. Clone / Download the project into your local
-2. Open the Command prompt and navigat to project location
+2. Open the Command prompt and navigate to project location
 3. Execute the following Maven command's
     - mvn clean :- To clean the maven repo
     - mvn compile :- To compile project
