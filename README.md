@@ -11,7 +11,8 @@ Return as output data: product identifier, brand identifier, price list, applica
 3. Cucumber
 4. Lombok
 5. Mapstruct
-6. H2Databse
+6. H2Database
+7. Swagger
 
 
 # Steps to start :
