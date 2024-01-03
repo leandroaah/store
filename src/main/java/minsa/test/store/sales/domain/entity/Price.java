@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Setter
 public class Price {
 
-    private Long id;
+    private Long priceId;
     private Long brandId;
     private LocalDateTime startDate;
     private LocalDateTime endDate;

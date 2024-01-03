@@ -18,7 +18,8 @@ public class PriceJpa {
     @Id
     @SequenceGenerator(name= "PRICE_SEQUENCE", sequenceName = "PRICE_SEQUENCE_ID", initialValue=3, allocationSize = 1)
     @GeneratedValue(generator = "PRICE_SEQUENCE")
-    private Long id;
+    @Column(name = "ID")
+    private Long priceId;
     @Column(name = "BRAND_ID")
     private Long brandId;
     @Column(name = "START_DATE")

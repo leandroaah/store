@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 public class BrandJpa {
     @Id
-    @SequenceGenerator(name= "BRANDSEQUENCE", sequenceName = "BRAND_SEQUENCE_ID", initialValue=3, allocationSize = 1)
+    @SequenceGenerator(name= "BRAND_SEQUENCE", sequenceName = "BRAND_SEQUENCE_ID", initialValue=3, allocationSize = 1)
     @GeneratedValue(generator = "BRAND_SEQUENCE")
     private Long id;
     private String name;
