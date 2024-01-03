@@ -40,7 +40,7 @@ public class PriceRepositoryImpl implements PriceRepository {
         List<Predicate> predicates = buildPredicates(criteriaBuilder, root, date, productId, brandId);
         criteriaQuery.where(criteriaBuilder.and(predicates.toArray(new Predicate[0])))
                 .orderBy(criteriaBuilder.desc(root.get(PRIORITY)));
-        return entityManager.createQuery(criteriaQuery).setMaxResults(1).getResultStream().findFirst().orElse(new PriceJpa());
+        return entityManager.createQuery(criteriaQuery).getResultStream().findFirst().orElse(new PriceJpa());
     }
 
     private List<Predicate> buildPredicates(CriteriaBuilder criteriaBuilder, Root<PriceJpa> root, LocalDateTime date,
