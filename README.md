@@ -28,7 +28,7 @@ Return as output data: product identifier, brand identifier, price list, applica
 # Examples request to end point :
 
    - import postman collection: store_collection.json
-   - OR
    - curl 'http://localhost:8080/api/store/price?date=2020-06-14T09:00:00&productId=35455&brandId=1'
    - curl 'http://localhost:8080/api/store/price?date=2020-06-14T15:00:00&productId=35455&brandId=1'
    - curl 'http://localhost:8080/api/store/price?date=2020-06-15T05:00:00&productId=35455&brandId=1'
+   - Swagger: http://localhost:8080/swagger-ui/index.html
