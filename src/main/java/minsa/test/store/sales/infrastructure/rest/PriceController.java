@@ -1,6 +1,7 @@
 package minsa.test.store.sales.infrastructure.rest;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -34,7 +35,7 @@ public class PriceController {
                     @ApiResponse(description = "The price", content = @Content(
                             schema = @Schema(implementation = PriceOutputDto.class)))
             })
-    public ResponseEntity<PriceOutputDto> findPriceByFilter(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    public ResponseEntity<PriceOutputDto> findPriceByFilter(@Parameter(example = "yyyy-MM-ddTHH:mm:ss") @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
                                                  LocalDateTime date,
                                                  @RequestParam Long productId,
                                                  @RequestParam Long brandId) {
